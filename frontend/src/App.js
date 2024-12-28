@@ -26,10 +26,6 @@ import TermsAndConditions from "./components/TermsAndConditions";
 import Home from "./pages/User/Home";
 
 
-
-
-
-
 export default function App() {
   const [favorites, setFavorites] = useState([]); 
   const [data, setData] = useState(null);
