@@ -1,11 +1,15 @@
 #   Product Management
 The dashboard allows admins to:
 
-View a list of products.
-Add new products to the catalog.
-Edit product details.
-Delete products from the inventory.
-To access the admin dashboard, use the following credentials:
+git clone https://github.com/ShanMaha/Product_Management.git
+cd Product_Management 
 
-Email: admin@gmail.com
-Password: admin123
+npm install  
+
+Start the back-end and front-end 
+npm start  
+
+
+PORT = 4000
+MONGO_URI = mongodb+srv://Admin:Admin@asho.eq3weks.mongodb.net/?retryWrites=true&w=majority 
+
