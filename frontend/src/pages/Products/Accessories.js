@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 const Accessorries = ({ favorites, setFavorites }) => {
   const navigate = useNavigate();
 
-  const addToFavorites = (optical) => {
-    setFavorites([...favorites, optical]);
+  const addToFavorites = (accessory) => {
+    setFavorites([...favorites, accessory]);
     navigate({
-      pathname: `/about/${optical.name}`,
-      state: { sunglass: optical },
+      pathname: `/about/${accessory.name}`,
+      state: { accessory: accessory },
     });
   };
 
@@ -19,7 +19,7 @@ const Accessorries = ({ favorites, setFavorites }) => {
   const [selectedAge, setSelectedAge] = useState("");
   const [selectedPrice, setSelectedPrice] = useState("");
 
-  const opticals = [
+  const accessories = [
     { name: "Straps - Black", price: 300, image: "/src/assets/products/black_strap.jpg", category: "Black", gender: "Unisex", age: "Adults" },
     { name: "Ear Hook Pair", price: 400, image: "/src/assets/products/ear_hook.jpg", category: "Blue", gender: "Male", age: "Adults" },
     { name: "Vehicle Sunglass Holder Clip", price: 2500, image: "/src/assets/products/sunglass_holder.jpg", category: "Red", gender: "Female", age: "Adults" },
@@ -30,72 +30,31 @@ const Accessorries = ({ favorites, setFavorites }) => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredOpticals = opticals.filter((optical) => {
+  const filteredAccessories = accessories.filter((accessory) => {
     return (
-      (selectedColor === "" || optical.category === selectedColor) &&
-      (selectedGender === "" || optical.gender === selectedGender) &&
-      (selectedAge === "" || optical.age === selectedAge) &&
-      (selectedPrice === "" || optical.price <= parseInt(selectedPrice))
+      (selectedColor === "" || accessory.category === selectedColor) &&
+      (selectedGender === "" || accessory.gender === selectedGender) &&
+      (selectedAge === "" || accessory.age === selectedAge) &&
+      (selectedPrice === "" || accessory.price <= parseInt(selectedPrice))
     );
   });
 
-  const styles = {
-    container: {
-      padding: "20px",
-      maxWidth: "1200px",
-      margin: "0 auto",
-      backgroundColor: "#f5f5f5",
-    },
-    searchContainer: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      marginBottom: "20px",
-    },
-    searchInput: {
-      width: "300px",
-      padding: "10px",
-      border: "1px solid #ccc",
-      borderRadius: "4px",
-      fontSize: "16px",
-    },
-    searchIcon: {
-      marginLeft: "-30px",
-      color: "#888",
-      cursor: "pointer",
-    },
-    filterRow: {
-      display: "flex",
-      justifyContent: "space-between",
-      marginBottom: "20px",
-    },
-    filterButton: {
-      padding: "10px 15px",
-      backgroundColor: "#007bff",
-      color: "#fff",
-      borderRadius: "4px",
-      cursor: "pointer",
-      fontSize: "14px",
-      transition: "background-color 0.3s",
-    },
-  };
-
   return (
-    <div style={styles.container}>
+    <div className="container mx-auto p-4 bg-gray-100">
       {/* Search Bar */}
-      <div style={styles.searchContainer}>
+      <div className="flex justify-center items-center mb-6 relative">
         <input
-          style={styles.searchInput}
+          className="w-72 p-2 border border-gray-300 rounded-md text-lg"
           type="text"
           placeholder="Search"
           value={searchTerm}
           onChange={handleSearch}
         />
-        <FaSearch style={styles.searchIcon} />
+        <FaSearch className="absolute text-gray-500 right-4 top-2.5 text-xl" />
       </div>
 
       {/* Filter Row */}
-      <div style={styles.filterRow}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         {/* Filter by Color */}
         <select
           className="px-4 py-2 border border-gray-300 rounded-md"
@@ -149,27 +108,36 @@ const Accessorries = ({ favorites, setFavorites }) => {
         </select>
       </div>
 
-      <h1 className="text-center font-bold text-xl mb-6">Accessories</h1>
-
+      <h1 className="text-center text-2xl font-semibold mb-6">Accessories</h1>
+      <p className="text-center text-lg mb-8 text-gray-700">
+        Discover our exclusive collection of stylish sunglasses. Whether you're looking for a bold, fashionable statement or a timeless classic, we have a variety of designs to suit every style. Find the perfect pair to protect your eyes while staying on trend.
+      </p>
       {/* Display filtered products */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredOpticals.map((optical, index) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+        {filteredAccessories.map((accessory, index) => (
           <div key={index} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105">
             <img
-              src={optical.image}
-              alt={optical.name}
+              src={accessory.image}
+              alt={accessory.name}
               className="w-full h-56 object-cover rounded-md mb-4"
             />
-            <h3 className="font-semibold text-gray-800">{optical.name}</h3>
-            <p className="text-gray-600">Rs {optical.price}</p>
+            <h3 className="font-semibold text-gray-800">{accessory.name}</h3>
+            <p className="text-gray-600">Rs {accessory.price}</p>
             <button
-              onClick={() => addToFavorites(optical)}
+              onClick={() => addToFavorites(accessory)}
               className="mt-4 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none"
             >
               Add to Cart
             </button>
           </div>
         ))}
+      </div>
+
+      {/* Next Button */}
+      <div className="flex justify-center mb-6">
+        <button className="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition-colors">
+          Next
+        </button>
       </div>
     </div>
   );

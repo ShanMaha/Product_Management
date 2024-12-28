@@ -41,141 +41,61 @@ const Spectacles = ({ favorites, setFavorites }) => {
   const displayOpticals = searchTerm === "" ? opticals : filteredOpticals;
 
   return (
-    <div className="container">
-      <div className="search-container">
+    <div className="container mx-auto p-6 bg-gray-100 min-h-screen">
+      <div className="flex justify-center items-center mb-6">
         <input
-          className="search-input"
+          className="p-3 w-full max-w-lg rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           type="text"
           placeholder="Search"
           value={searchTerm}
           onChange={handleSearch}
         />
-        <FaSearch className="search-icon" />
+        <FaSearch className="absolute text-gray-500 right-4 top-2.5 text-xl" />
       </div>
-      <h1>
-        <center>
-          <b>Spectacles</b>
-        </center>
-        <br />
-      </h1>
 
-      <div className="products-container">
+      <h1 className="text-3xl text-center font-bold mb-6">Spectacles</h1>
+      <p className="text-center text-lg mb-8 text-gray-700">
+        Discover our exclusive collection of stylish sunglasses. Whether you're looking for a bold, fashionable statement or a timeless classic, we have a variety of designs to suit every style. Find the perfect pair to protect your eyes while staying on trend.
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {displayOpticals.map((optical, index) => (
-          <div key={index} className="card">
-            <a href={`/view`}>
-              <div className="big-image">
-                <img className="image" src={optical.image} alt={optical.name} />
+          <div
+            key={index}
+            className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+          >
+            <Link to={`/view`} className="block">
+              <div className="h-56 bg-gray-200 flex justify-center items-center">
+                <img className="max-h-full max-w-full object-contain" src={optical.image} alt={optical.name} />
               </div>
-            </a>
-            <div className="details">
-              <h4>{optical.name}</h4>
-              <div className="price-info">
-                <b>
-                  <h2>
-                    <p>Rs {optical.price}</p>
-                  </h2>
-                </b>
-              </div>
-              <div className="additional-info">
-                <button
-                  className="button"
-                  onClick={() => addToFavorites(optical)}
-                >
-                  Add to cart
-                </button>
-              </div>
+            </Link>
+            <div className="p-4 text-center">
+              <h4 className="text-xl font-semibold mb-2">{optical.name}</h4>
+              <div className="text-lg text-green-600 font-bold mb-4">Rs {optical.price}</div>
+              <button
+                className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none"
+                onClick={() => addToFavorites(optical)}
+              >
+                Add to cart
+              </button>
             </div>
           </div>
         ))}
       </div>
-      <Link className="link" to="/more">
-        More Details
-      </Link>
 
-      <style jsx>{`
-        .container {
-          padding: 20px;
-          background-color: #f4f4f4;
-          min-height: 100vh;
-        }
+      <div className="flex justify-center mt-8">
+        <Link
+          to="/more"
+          className="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 transition duration-300"
+        >
+          More Details
+        </Link>
+      </div>
 
-        .search-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-bottom: 20px;
-        }
-
-        .search-input {
-          padding: 10px;
-          width: 80%;
-          max-width: 500px;
-          border-radius: 5px;
-          border: 1px solid #ccc;
-        }
-
-        .search-icon {
-          position: absolute;
-          right: 25px;
-          top: 15px;
-          font-size: 20px;
-          color: #888;
-        }
-
-        .products-container {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-          justify-items: center;
-        }
-
-        .card {
-          background-color: #fff;
-          border-radius: 10px;
-          padding: 10px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          width: 250px;
-          text-align: center;
-        }
-
-        .big-image {
-          height: 200px;
-          margin-bottom: 10px;
-        }
-
-        .image {
-          max-width: 100%;
-          max-height: 100%;
-          object-fit: contain;
-        }
-
-        .details {
-          text-align: center;
-        }
-
-        .price-info {
-          margin-top: 10px;
-          margin-bottom: 10px;
-        }
-
-        .button {
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          padding: 10px;
-          border-radius: 5px;
-          cursor: pointer;
-          width: 100%;
-        }
-
-        .link {
-          display: block;
-          text-align: center;
-          margin-top: 20px;
-          text-decoration: none;
-          color: #007bff;
-        }
-      `}</style>
+      <div className="flex justify-center mt-4">
+        <button className="bg-blue-500 text-white py-2 px-6 rounded-md hover:bg-blue-600 transition duration-300">
+          Next
+        </button>
+      </div>
     </div>
   );
 };

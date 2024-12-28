@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Typography, Grid, Card, CardMedia, CardContent } from "@mui/material";
 
 const More = () => {
   // Sample data for optical company details
@@ -20,51 +19,45 @@ const More = () => {
   };
 
   return (
-    <Container maxWidth="md" sx={{ paddingTop: 4 }}>
-      <Typography variant="h3" gutterBottom align="center">
-        {companyDetails.name}
-      </Typography>
-      <Grid container spacing={2} justifyContent="center">
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardMedia
-              component="img"
-              height="200"
-              image={companyDetails.images[0]}
+    <div className="max-w-6xl mx-auto py-8 px-4">
+      <h1 className="text-3xl font-semibold text-center mb-8">{companyDetails.name}</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Main Image Section */}
+        <div className="flex justify-center">
+          <div className="max-w-xs w-full shadow-lg rounded-lg overflow-hidden">
+            <img
+              className="w-full h-64 object-cover"
+              src={companyDetails.images[0]}
               alt="Optical Company Image"
             />
-          </Card>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <CardContent>
-            <Typography variant="body1" gutterBottom>
-              <strong>Location:</strong> {companyDetails.location}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              <strong>Phone:</strong> {companyDetails.phone}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              <strong>Email:</strong> {companyDetails.email}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              <strong>Website:</strong> {companyDetails.website}
-            </Typography>
-          </CardContent>
-        </Grid>
-      </Grid>
-      <Typography variant="h5" align="center" sx={{ paddingTop: 4, paddingBottom: 2 }}>
-        Other Images
-      </Typography>
-      <Grid container spacing={2} justifyContent="center">
+          </div>
+        </div>
+
+        {/* Company Details Section */}
+        <div className="flex flex-col justify-center">
+          <div className="text-lg space-y-4">
+            <p className="text-gray-700"><strong>Location:</strong> {companyDetails.location}</p>
+            <p className="text-gray-700"><strong>Phone:</strong> {companyDetails.phone}</p>
+            <p className="text-gray-700"><strong>Email:</strong> {companyDetails.email}</p>
+            <p className="text-gray-700"><strong>Website:</strong> <a href={`https://${companyDetails.website}`} className="text-indigo-600 hover:underline">{companyDetails.website}</a></p>
+          </div>
+        </div>
+      </div>
+
+      {/* Other Images Section */}
+      <h2 className="text-2xl font-semibold text-center mt-12 mb-4">Other Images</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {companyDetails.images.slice(1).map((imageUrl, index) => (
-          <Grid item key={index}>
-            <Card>
-              <CardMedia component="img" height="200" image={imageUrl} alt={`Image ${index + 2}`} />
-            </Card>
-          </Grid>
+          <div key={index} className="shadow-lg rounded-lg overflow-hidden">
+            <img
+              className="w-full h-48 object-cover"
+              src={imageUrl}
+              alt={`Image ${index + 2}`}
+            />
+          </div>
         ))}
-      </Grid>
-    </Container>
+      </div>
+    </div>
   );
 };
 

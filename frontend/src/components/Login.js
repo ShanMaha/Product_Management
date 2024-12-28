@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
-import GoogleSvg from "../assets/icons8-google.svg";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const Login = () => {
@@ -75,18 +74,16 @@ const Login = () => {
             </button>
             <button
               type="button"
-              className="w-full flex items-center justify-center bg-blue-800 border-gray-300 py-2 rounded hover:bg-gray-200"
-              onClick={() => window.location.href = "https://mail.google.com"}
+              className="w-full flex items-center justify-center bg-blue-800 text-white py-2 rounded hover:bg-blue-900"
+              onClick={() => window.location.href = "https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?access_type=offline&client_id=574833888516-i8s6kb1mha2r5saa5gu6gbt5hnh3g36u.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fapi-icons.icons8.com%2Fauth%2Fv1%2Fsocials-callback&response_type=code&scope=profile%20email&state=%7B%22client%22%3A%22web%22%2C%22type%22%3A%22google%22%2C%22clientRedirect%22%3A%22https%3A%2F%2Ficons8.com%2Ficons%2Fset%2Femail--static--red%22%2C%22domain%22%3A%22icons8.com%22%7D&service=lso&o2v=2&ddm=1&flowName=GeneralOAuthFlow"}
             >
-              <img src={GoogleSvg} alt="Google" className="w-5 h-5 mr-2" />
               Log In with Google
             </button>
             <button
               type="button"
-              className="w-full flex items-center justify-center bg-blue-800 border-gray-300 py-2 rounded hover:bg-gray-200"
+              className="w-full flex items-center justify-center bg-blue-800 text-white py-2 rounded hover:bg-blue-900"
               onClick={() => window.location.href = "https://mail.google.com"}
             >
-              <img src={GoogleSvg} alt="Google" className="w-5 h-5 mr-2" />
               Log In with Email
             </button>
             <button
