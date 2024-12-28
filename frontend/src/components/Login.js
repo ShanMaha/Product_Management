@@ -22,9 +22,7 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
-        <div className="mb-6 text-center">
-          <img src={Logo} alt="Logo" className="mx-auto w-24 h-24" />
-        </div>
+      <h2 className="text-2xl font-bold text-blue-800 text-center">ICARE</h2>
         <h2 className="text-2xl font-bold text-gray-800 text-center">Welcome back!</h2>
         <p className="text-gray-600 text-center mb-6">Please enter your details</p>
         <form onSubmit={handleLogin} className="space-y-4">

@@ -30,7 +30,7 @@ const Home = () => {
   // Image Sets for each category
   const heroImages = [
     "https://imatrix.com/wp-content/uploads/sites/12/2020/09/shutterstock_1716928600-1024x536.png",
-    "https://i5.walmartimages.com/asr/e4d4cc52-5cf0-4413-886d-c5178f9fa25f.2e7c25df0ecf6cf1662ccd59c6ea3395.jpeg",
+    "https://www.eyefashionoptical.com/img/EFO_2.jpg",
     "https://storage.googleapis.com/website-production/uploads/2023/04/what-is-contextual-advertising.webp",
   ];
 
@@ -67,6 +67,8 @@ const Home = () => {
      "https://shop.visioncare.lk/media/catalog/product/cache/1/small_image/9df78eab33525d08d6e5fb8d27136e95/c/l/clip2_grey.jpg",
   ];
 
+
+
   // Hero slider settings
   const heroSettings = {
     dots: true,
@@ -91,8 +93,8 @@ const Home = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto">
-       {/* Header */}
-       <header className="bg-gray-100 p-1 shadow-md">
+      {/* Header */}
+      <header className="bg-gray-100 p-1 shadow-md">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <NavLink to="/home" className="font-bold text-xl">
@@ -146,31 +148,24 @@ const Home = () => {
           </div>
         </div>
       </header>
-
       {/* Hero Slider */}
-      <div className="my-8">
-        <Slider {...heroSettings}>
-          {heroImages.map((image, index) => (
-            <div key={index}>
-              <div className="relative">
-                <img
-                  src={image}
-                  alt={`Hero Image ${index + 1}`}
-                  className="w-full h-96 object-cover" // Adjusted width and height
-                />
-              </div>
-            </div>
-          ))}
-        </Slider>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          className="text-center mt-4 font-bold"
-        >
-          <b>ICARE</b>
-        </Typography>
+      <div className="my-10">
+  <Slider {...heroSettings}>
+    {heroImages.map((image, index) => (
+      <div key={index}>
+        <div className="relative">
+          <img
+            src={image}
+            alt={`Hero Image ${index + 1}`}
+            className="w-full h-100 object-cover" // Increased width of hero slider here
+          />
+        </div>
       </div>
+    ))}
+  </Slider>
+</div>
+
+      
 
       {/* Sidebar */}
       <Drawer
